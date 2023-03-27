@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <title>Add product</title>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar mb-5">
+
+    <div class="container">
+
+        <a class="navbar-brand" href="products">
+            <strong class="green-text">OnlineShop</strong>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="colapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a href="products" class="nav-link">Home</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<main>
+    <form action="add" method="POST">
+
+        <div class="container green-text">
+            <div class="form-group">
+                <label for="inputName">name</label>
+                <input type="text" class="form-control" id="inputName" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="price">price</label>
+                <input type="text" title="Используйте числовой формат" pattern="^[0-9]+$" class="form-control"
+                       id="price" name="price" required>
+            </div>
+
+            <div class="form-group">
+                <label for="inputDescription">description</label>
+                <input type="text" class="form-control" id="inputDescription" name="description" required>
+            </div>
+
+            <button type="submit" class="btn btn-outline-success mt-4">Save</button>
+            <input type="hidden" name="id">
+        </div>
+
+    </form>
+</main>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+</body>
+</html>
+

@@ -4,7 +4,6 @@ import com.shalimov.onlineShop.entity.Product;
 import com.shalimov.onlineShop.service.ProductService;
 import com.shalimov.onlineShop.web.PageGenerator;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +12,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@Slf4j
 @RequiredArgsConstructor
 public class EditProduct extends HttpServlet {
     private final PageGenerator pageGenerator;

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>OnlineShop</title>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-light white scrolling-navbar mb-5">
+
+    <div class="container">
+        <a class="navbar-brand" href="products">
+            <strong class="green-text">OnlineShop</strong>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
+                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="colapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a href="products" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="add" class="nav-link">Add product</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</nav>
+
+<main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+        <div class="row">
+
+            <div class="col-md-8 mb-4">
+
+                <div>
+                    <a href="#" class="font-weight-bold"></a>
+                    <h5>${product.getName()}</h5>
+
+                    <p class="lead">
+                    <h4 class="font-weight-bold green-text">
+                        <strong>${product.getPrice()}</strong>
+                    </h4>
+                    </p>
+
+                    <p class="lead grey-text ">Description</p>
+                    <p>${product.getDescription()}</p>
+
+                    <form action="edit" method="GET">
+                        <h6><a href="edit?id=${product.getId()}" class="grey-text">Edit</a></h6>
+                        <input type="hidden" name="id" value="${product.getId()}">
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+<footer class="page-footer fixed-bottom text-center font-small mt-4 navbar navbar-nav">
+
+</footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+</body>
+</html>

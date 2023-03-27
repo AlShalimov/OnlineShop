@@ -1,15 +1,45 @@
 package com.shalimov.onlineShop.web;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import freemarker.template.Configuration;
+import freemarker.template.Template;
+import freemarker.template.TemplateException;
 
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.Map;
 
 
-@Slf4j
-@RequiredArgsConstructor
 public class PageGenerator {
-    public boolean getPage(String s, Map<String, Object> mapProduct) {
-        return true;
+    private static final String HTML_DIR = "/templates";
+
+    private static PageGenerator pageGenerator;
+    private final Configuration configuration;
+
+    public static PageGenerator instance() {
+        if (pageGenerator == null)
+            pageGenerator = new PageGenerator();
+        return pageGenerator;
+    }
+
+    public String getPage(String filename) {
+        return getPage(filename, null);
+    }
+
+    public String getPage(String filename, Map<String, Object> data) {
+        Writer stream = new StringWriter();
+        try {
+            configuration.setClassForTemplateLoading(this.getClass(), HTML_DIR);
+            Template template = configuration.getTemplate(filename);
+            template.process(data, stream);
+        } catch (IOException | TemplateException e) {
+            throw new RuntimeException(e);
+        }
+        return stream.toString();
+    }
+
+    private PageGenerator() {
+        configuration = new Configuration();
     }
 }
+
