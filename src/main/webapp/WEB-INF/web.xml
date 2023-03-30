@@ -2,17 +2,17 @@
 
     <servlet>
         <servlet-name>show-all-products</servlet-name>
-        <servlet-class>com.shalimov.onlineShop.web.servlet.ShowAllProducts</servlet-class>
+        <servlet-class>com.shalimov.onlineShop.web.servlet.GetAllProductServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>show-one-product</servlet-name>
-        <servlet-class>com.shalimov.onlineShop.web.servlet.ShowOneProduct</servlet-class>
+        <servlet-class>com.shalimov.onlineShop.web.servlet.GetProductServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>edit-product</servlet-name>
-        <servlet-class>com.shalimov.onlineShop.web.servlet.EditProduct</servlet-class>
+        <servlet-class>com.shalimov.onlineShop.web.servlet.AddProductServlet</servlet-class>
     </servlet>
 
     <servlet>

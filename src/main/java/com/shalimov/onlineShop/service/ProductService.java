@@ -5,11 +5,13 @@ import com.shalimov.onlineShop.entity.Product;
 import java.util.List;
 
 public interface ProductService {
-    public Product getById(long id);
+    List<Product> getAllProducts();
 
-    public List<Product> getAll();
+    void addProduct(Product product);
 
-    public void edit(Product product);
+    Product getProductById(long id);
 
-    public void insert(Product product);
+    void editProduct(Product product);
+
+    void deleteProduct(long id);
 }

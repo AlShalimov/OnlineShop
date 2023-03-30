@@ -1,6 +1,5 @@
 package com.shalimov.onlineShop.dao.jdbs.mapper;
 
-import com.shalimov.onlineShop.dao.jdbs.ProductRowMapper;
 import com.shalimov.onlineShop.entity.Product;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -8,7 +7,8 @@ import org.mockito.Mockito;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
 class ProductRowMapperTest {
@@ -23,7 +23,7 @@ class ProductRowMapperTest {
         when(mockResultSet.getDouble("price")).thenReturn(48000.00);
         when(mockResultSet.getString("description")).thenReturn("apple iphone 15");
 
-        Product actual = productRowMapper.rowMap(mockResultSet);
+        Product actual = productRowMapper.mapRow(mockResultSet);
 
         assertNotNull(actual);
 
