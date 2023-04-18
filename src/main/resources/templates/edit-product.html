@@ -1,7 +1,75 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<div th:replace="head :: copy"></div>
+<head >
+    <title>OnlineShop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"  href="/assets/css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+</head>
 <body>
+<div class="wrapper">
+    <div class="container">
+        <div class="header__body">
+            <a class="header__logo" href="/"><img src="/assets/img/logo.jpg" alt=""></a>
+            <div class="header__burger">
+                <span></span>
+            </div>
+            <nav class="header__menu">
+                <ul class="header__list">
+                    <li><a href="/" class="header__link link">home</a></li>
+                    <li><a href="add" class="header__link link">add</a></li>
+                    <li><a href="#" class="header__link link">about</a></li>
+                    <li th:if="${user==null}"><a href="/login" class="header__link link">login</a></li>
 
+                    <li th:if="${user!=null}">
+                        <form action="/logout" method="post">
+                            <input class="header__link link link__button" type="submit" value="logout">
+                        </form>
+                    </li>
+
+                    <li>
+                        <form action="/" method="GET">
+                            <input  type="search" name="search">
+                            <input class="btn" type="submit" value="Search">
+                        </form>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
+    <div class="content">
+        <div class="container">
+
+            <form action="edit" class="content__form"  method="POST">
+                <div class="content__form-element">
+                    <div class="content__form-lable"><label for="name" >name</label></div>
+                    <div ><input class ="content__form-input" type="text" id="name" name="name" th:value="${product.name}" required></div>
+                </div>
+
+                <div class="content__form-element">
+                    <div class="content__form-lable"><label for="price" >price</label></div>
+                    <div><input class ="content__form-input" type="text" title="Используйте числовой формат" pattern="^[0-9]+$" id="price" name="price" th:value="${product.price}" required></div>
+                </div>
+
+                <div class="content__form-element">
+                    <div class="content__form-lable"><label for="description" >description</label></div>
+                    <div><textarea class ="content__form-description" type="text" id="description" name="description" th:text="${product.description}" required></textarea></div>
+                </div>
+                <input type="hidden" id="id" name="id" th:value = "${product.id}">
+                <div><input class="btn" type="submit" name="save"></div>
+            </form>
+
+        </div>
+    </div>
+</div>
+<div>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="/assets/js/script.js"></script>
+</div>
 </body>
 </html>

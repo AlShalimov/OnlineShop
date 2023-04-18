@@ -13,17 +13,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class JdbcProductDao implements ProductDao {
-    private static final String GET_ALL_PRODUCTS = "SELECT id, name, price, description FROM online_shop;";
-    private static final String ADD_PRODUCT = "INSERT INTO online_shop  (name, price, description) " +
+    private static final String GET_ALL_PRODUCTS = "SELECT id, name, price, description FROM Products;";
+    private static final String ADD_PRODUCT = "INSERT INTO Products  (name, price, description) " +
             "VALUES (?, ?, ?);";
-    private static final String GET_PRODUCT_BY_ID = "SELECT id, name, price, description FROM online_shop " +
+    private static final String GET_PRODUCT_BY_ID = "SELECT id, name, price, description FROM Products " +
             "WHERE id=?;";
-    private static final String GET_PRODUCT_BY_NAME = "SELECT id, name, price, description FROM online_shop " +
+    private static final String GET_PRODUCT_BY_NAME = "SELECT id, name, price, description FROM Products " +
             "WHERE name=?;";
 
-    private static final String EDIT_PRODUCT = "UPDATE online_shop SET name=?, price=?, description=?" +
+    private static final String EDIT_PRODUCT = "UPDATE Products SET name=?, price=?, description=?" +
             "WHERE id=?;";
-    private static final String DELETE_PRODUCT = "DELETE FROM online_shop WHERE id=?;";
+    private static final String DELETE_PRODUCT = "DELETE FROM Products WHERE id=?;";
+    private static final String SEARCH_PRODUCT = "SELECT id, name, price, description FROM Products " +
+            "WHERE LOWER(name) LIKE LOWER(?) OR LOWER(description) LIKE LOWER(?);";
 
     private static final ProductRowMapper PRODUCT_ROW_MAPPER = new ProductRowMapper();
 
@@ -120,6 +122,25 @@ public class JdbcProductDao implements ProductDao {
             }
         } catch (SQLException e) {
             throw new RuntimeException("Product with id " + name + " not found", e);
+        }
+    }
+    @Override
+    public List<Product> search(String word) {
+        List<Product> products = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement preparedStatement = connection.prepareStatement(SEARCH_PRODUCT)) {
+            String searchWord = "%" + word + "%";
+            preparedStatement.setString(1, searchWord);
+            preparedStatement.setString(2, searchWord);
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                while (resultSet.next()) {
+                    Product product = PRODUCT_ROW_MAPPER.mapRow(resultSet);
+                    products.add(product);
+                }
+                return products;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Products with word " + word + " aren't found", e);
         }
     }
 }

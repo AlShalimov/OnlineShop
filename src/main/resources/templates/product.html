@@ -1,7 +1,76 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<div th:replace="head :: copy"></div>
+<title>OnlineShop</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
 <body>
+<div class="wrapper">
+    <div class="wrapper">
+        <div class="container">
+            <div class="header__body">
+                <a class="header__logo" href="/"><img src="/assets/img/logo.jpg" alt=""></a>
+                <div class="header__burger">
+                    <span></span>
+                </div>
+                <nav class="header__menu">
+                    <ul class="header__list">
+                        <li><a href="/" class="header__link link">home</a></li>
+                        <li><a href="add" class="header__link link">add</a></li>
+                        <li><a href="#" class="header__link link">about</a></li>
+                        <li><a href="/login" class="header__link link">login</a></li>
 
+                        <li>
+                            <form action="/logout" method="post">
+                                <input class="header__link link link__button" type="submit" value="logout">
+                            </form>
+                        </li>
+
+                        <li>
+                            <form action="/" method="GET">
+                                <input type="search" name="search">
+                                <input class="btn" type="submit" value="Search">
+                            </form>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    <div class="content">
+        <div class="container">
+            <div class="content__row">
+                <div class="content__left">
+                    <div class="left__row">
+
+                        <div class="left__link" if="${user!=null&&user.getUserRole().getName() == 'ADMIN'}">
+                            <a class="link" href="'/edit?id=' + ${product.id}" >edit</a>
+                            <a class="link" href="'/delete?id=' + ${product.id}" >delete</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="content__right">
+                    <div class="right__row">
+                        <div class="right__title" text = "${product.name}"></div>
+                        <div class="right__option">
+                            <div class="option__row align__left">
+                                <div class="option__price product__price" text = "'$ ' + ${product.price}"></div>
+                                <div class="option__image product__option"><i class="fas fa-cart-plus"></i></div>
+                                <div class="option__image product__option"><i class="fas fa-balance-scale"></i></div>
+                                <div class="option__image product__option"><i class="far fa-heart"></i></div>
+                            </div>
+                        </div>
+                        <div class="right__text" text="${product.description}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+    <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="/assets/js/script.js"></script>
 </body>
-</html>

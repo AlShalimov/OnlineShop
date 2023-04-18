@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OnlineShop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"  href="/assets/css/style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+</head>
+<body>
+<div class="container">
+    <div class="header__body">
+        <a class="header__logo" href="/"><img src="/assets/img/logo.jpg" alt=""></a>
+        <div class="header__burger">
+            <span></span>
+        </div>
+        <nav class="header__menu">
+            <ul class="header__list">
+                <li><a href="/" class="header__link link">home</a></li>
+                <li><a href="add" class="header__link link">add</a></li>
+                <li><a href="#" class="header__link link">about</a></li>
+                <li><a href="/login" class="header__link link">login</a></li>
+                <li >
+                    <form action="/logout" method="post">
+                        <input class="header__link link link__button" type="submit" value="logout">
+                    </form>
+                </li>
+
+                <li>
+                    <form action="/" method="GET">
+                        <input  type="search" name="search">
+                        <input class="btn" type="submit" value="Search">
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<div class="container">
+    <h1>All products</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">id</th>
+            <th scope="col">name</th>
+            <th scope="col">price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <#list products as product>
+        <tr>
+            <td>${product.id}</td>
+            <td>${product.name}</td>
+            <td>${product.price}</td>
+        </tr>
+        </#list>
+        </tbody>
+    </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="/assets/js/script.js"></script>
+</body>
+</html>

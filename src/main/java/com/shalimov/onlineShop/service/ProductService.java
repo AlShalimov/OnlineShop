@@ -14,4 +14,6 @@ public interface ProductService {
     void editProduct(Product product);
 
     void deleteProduct(long id);
+
+    List<Product> searchProducts(String word);
 }

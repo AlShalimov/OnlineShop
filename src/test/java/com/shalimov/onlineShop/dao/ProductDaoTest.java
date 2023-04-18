@@ -4,20 +4,20 @@ import com.shalimov.onlineShop.dao.jdbs.DataSourceFactory;
 import com.shalimov.onlineShop.dao.jdbs.JdbcProductDao;
 import com.shalimov.onlineShop.entity.Product;
 import com.shalimov.onlineShop.util.PropertyReader;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 
 public class ProductDaoTest {
 
     private ProductDao productDao;
 
-    @BeforeEach
+    @Before
     public void set() {
         String pathToProperty = "application.properties";
         PropertyReader propertyReader = new PropertyReader(pathToProperty);

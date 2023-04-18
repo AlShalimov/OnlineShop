@@ -34,6 +34,17 @@ public class PageGenerator {
         return stream.toString();
     }
 
+    public void writePage(Writer writer, String templatePath) {
+        try {
+            cfg.setClassForTemplateLoading(this.getClass(), HTML_DIR);
+            cfg.setDefaultEncoding("UTF-8");
+            Template template = cfg.getTemplate(templatePath);
+            template.process(null, writer);
+        } catch (IOException | TemplateException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     private PageGenerator() {
         cfg = new Configuration();
     }

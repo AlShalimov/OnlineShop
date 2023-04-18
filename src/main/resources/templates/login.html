@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
+<head >
     <title>OnlineShop</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css"/>
+    <link rel="stylesheet" type="text/css"  href="/assets/css/style.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
 </head>
+
+
 <body>
 <div class="wrapper">
     <div class="container">
@@ -21,9 +23,9 @@
                     <li><a href="/" class="header__link link">home</a></li>
                     <li><a href="add" class="header__link link">add</a></li>
                     <li><a href="#" class="header__link link">about</a></li>
-                    <li><a href="/login" class="header__link link">login</a></li>
+                    <li ><a href="/login" class="header__link link">login</a></li>
 
-                    <li>
+                    <li >
                         <form action="/logout" method="post">
                             <input class="header__link link link__button" type="submit" value="logout">
                         </form>
@@ -31,7 +33,7 @@
 
                     <li>
                         <form action="/" method="GET">
-                            <input type="search" name="search">
+                            <input  type="search" name="search">
                             <input class="btn" type="submit" value="Search">
                         </form>
                     </li>
@@ -42,29 +44,25 @@
     <div class="content">
         <div class="container">
 
-            <form action="add" class="content__form" method="POST">
+            <form action="login" class="content__form"  method="POST">
                 <div class="content__form-element">
-                    <div class="content__form-lable"><label for="name">name</label></div>
-                    <div><input class="content__form-input" type="text" id="name" name="name" required></div>
+                    <div class="content__form-lable"><label for="email" >email</label></div>
+                    <div ><input class ="content__form-input" type="text" id="email" name="email" required></div>
                 </div>
 
                 <div class="content__form-element">
-                    <div class="content__form-lable"><label for="price">price</label></div>
-                    <div><input class="content__form-input" type="text" title="Используйте числовой формат"
-                                pattern="^[0-9]+$" id="price" name="price" required></div>
+                    <div class="content__form-lable"><label for="password" >password</label></div>
+                    <div><input type="password" class ="content__form-input"  id="password" name="password" required></div>
                 </div>
 
-                <div class="content__form-element">
-                    <div class="content__form-lable"><label for="description">description</label></div>
-                    <div><textarea class="content__form-description" type="text" id="description" name="description"
-                                   required></textarea></div>
-                </div>
-                <div><input class="btn" type="submit" name="save"></div>
+                <div><input class="btn" type="submit" name="login"></div>
             </form>
+
         </div>
     </div>
+
 </div>
-<div>
+<div >
     <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
     <script src="/assets/js/script.js"></script>

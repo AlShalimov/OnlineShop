@@ -16,4 +16,6 @@ public interface ProductDao {
     void deleteById(long id);
 
     Product getByName(String name);
+
+    List<Product> search(String word);
 }
